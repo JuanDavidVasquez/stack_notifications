@@ -9,10 +9,7 @@ export class EmailController {
    */
   async sendWelcomeEmail(req: LocalizedRequest, res: Response) {
     try {
-      const { to,data, priority} = req.body;
-
-      // Detectar idioma del usuario o usar el de la petición
-      const language = (req.language || 'en') as SupportedLanguage;
+      const { to, data, priority, language } = req.body;
 
       await emailService.sendEmail({
         to: to,
@@ -49,18 +46,22 @@ export class EmailController {
    */
   async sendPasswordResetEmail(req: LocalizedRequest, res: Response) {
     try {
-      const { email, userName, resetLink, expiresIn } = req.body;
-      
-      const language = (req.language || 'en') as SupportedLanguage;
+      const { to, data, priority } = req.body;
+
+      const language = (data.language || 'en') as SupportedLanguage;
 
       await emailService.sendEmail({
-        to: email,
+        to: to,
         template: 'password-reset',
         language,
         data: {
-          userName,
-          resetLink,
-          expiresIn: expiresIn || '24 hours'
+          firstName: data.firstName,
+          temporaryPassword: data.temporaryPassword,
+          resetToken: data.resetToken,
+          resetExpiry: data.resetExpiry,
+          year: data.year,
+          companyLogoUrl: data.companyLogoUrl,
+          companyName: data.companyName,
         }
       });
 
@@ -83,7 +84,7 @@ export class EmailController {
   async sendPasswordChangedEmail(req: LocalizedRequest, res: Response) {
     try {
       const { email, userName, changedAt } = req.body;
-      
+
       const language = (req.language || 'en') as SupportedLanguage;
 
       await emailService.sendEmail({
@@ -115,8 +116,8 @@ export class EmailController {
    */
   async sendNotificationEmail(req: LocalizedRequest, res: Response) {
     try {
-      const { 
-        to, 
+      const {
+        to,
         subject,
         template = 'notification',
         language = req.language || 'en',
@@ -165,7 +166,7 @@ export class EmailController {
       }
 
       // Validar que cada email tenga la estructura correcta
-      const validEmails = emails.every(email => 
+      const validEmails = emails.every(email =>
         email.to && email.template && email.language && email.data
       );
 
@@ -198,7 +199,7 @@ export class EmailController {
   async getEmailServiceStatus(req: LocalizedRequest, res: Response) {
     try {
       const status = emailService.getStatus();
-      
+
       res.status(200).json({
         status: 'success',
         data: status
@@ -218,7 +219,7 @@ export class EmailController {
   async clearTemplateCache(req: LocalizedRequest, res: Response) {
     try {
       emailService.clearCache();
-      
+
       res.status(200).json({
         status: 'success',
         message: req.t('responses.general.operation_successful')
