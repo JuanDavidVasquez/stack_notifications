@@ -1,0 +1,98 @@
+export const TRANSLATION_KEYS = {
+  RESPONSES: {
+    USER: {
+      CREATED: 'responses.user.created',
+      UPDATED: 'responses.user.updated',
+      DELETED: 'responses.user.deleted',
+      ACTIVATED: 'responses.user.activated',
+      DEACTIVATED: 'responses.user.deactivated',
+      VERIFIED: 'responses.user.verified',
+      ROLE_UPDATED: 'responses.user.role_updated',
+      RETRIEVED: 'responses.user.retrieved',
+      LIST_RETRIEVED: 'responses.user.list_retrieved',
+    },
+    AUTH: {
+      LOGIN_SUCCESS: 'responses.auth.login_success',
+      LOGOUT_SUCCESS: 'responses.auth.logout_success',
+      TOKEN_REFRESHED: 'responses.auth.token_refreshed',
+      PASSWORD_RESET_SENT: 'responses.auth.password_reset_sent',
+      PASSWORD_CHANGED: 'responses.auth.password_changed',
+    },
+    GENERAL: {
+      OPERATION_SUCCESSFUL: 'responses.general.operation_successful',
+      RESOURCE_CREATED: 'responses.general.resource_created',
+      RESOURCE_UPDATED: 'responses.general.resource_updated',
+      RESOURCE_DELETED: 'responses.general.resource_deleted',
+    },
+  },
+  ERRORS: {
+    GENERAL: {
+      INTERNAL_SERVER: 'errors.general.internal_server',
+      NOT_FOUND: 'errors.general.not_found',
+      UNAUTHORIZED: 'errors.general.unauthorized',
+      FORBIDDEN: 'errors.general.forbidden',
+      VALIDATION_FAILED: 'errors.general.validation_failed',
+      INVALID_REQUEST: 'errors.general.invalid_request',
+    },
+    USER: {
+      NOT_FOUND: 'errors.user.not_found',
+      EMAIL_EXISTS: 'errors.user.email_exists',
+      USERNAME_EXISTS: 'errors.user.username_exists',
+      ALREADY_VERIFIED: 'errors.user.already_verified',
+      INVALID_CREDENTIALS: 'errors.user.invalid_credentials',
+      ACCOUNT_LOCKED: 'errors.user.account_locked',
+      ACCOUNT_INACTIVE: 'errors.user.account_inactive',
+    },
+    AUTH: {
+      INVALID_TOKEN: 'errors.auth.invalid_token',
+      EXPIRED_TOKEN: 'errors.auth.expired_token',
+      SESSION_EXPIRED: 'errors.auth.session_expired',
+      INSUFFICIENT_PERMISSIONS: 'errors.auth.insufficient_permissions',
+      INVALID_REFRESH_TOKEN: 'errors.auth.invalid_refresh_token',
+    },
+    VALIDATION: {
+      REQUIRED_FIELD: 'errors.validation.required_field',
+      INVALID_EMAIL: 'errors.validation.invalid_email',
+      INVALID_PASSWORD: 'errors.validation.invalid_password',
+      PASSWORD_TOO_SHORT: 'errors.validation.password_too_short',
+      PASSWORD_TOO_WEAK: 'errors.validation.password_too_weak',
+      INVALID_ROLE: 'errors.validation.invalid_role',
+    },
+  },
+  VALIDATION: {
+    USER: {
+      FIRSTNAME_REQUIRED: 'validation.user.firstName_required',
+      FIRSTNAME_MIN_LENGTH: 'validation.user.firstName_min_length',
+      LASTNAME_REQUIRED: 'validation.user.lastName_required',
+      LASTNAME_MIN_LENGTH: 'validation.user.lastName_min_length',
+      EMAIL_REQUIRED: 'validation.user.email_required',
+      EMAIL_INVALID: 'validation.user.email_invalid',
+      PASSWORD_REQUIRED: 'validation.user.password_required',
+      PASSWORD_MIN_LENGTH: 'validation.user.password_min_length',
+      USERNAME_MIN_LENGTH: 'validation.user.username_min_length',
+      ROLE_INVALID: 'validation.user.role_invalid',
+    },
+    AUTH: {
+      CREDENTIALS_REQUIRED: 'validation.auth.credentials_required',
+      TOKEN_REQUIRED: 'validation.auth.token_required',
+      REFRESH_TOKEN_REQUIRED: 'validation.auth.refresh_token_required',
+    },
+  },
+  COMMON: {
+    LOADING: 'common.loading',
+    SAVING: 'common.saving',
+    DELETING: 'common.deleting',
+    CONFIRM: 'common.confirm',
+    CANCEL: 'common.cancel',
+    YES: 'common.yes',
+    NO: 'common.no',
+    OK: 'common.ok',
+    ERROR: 'common.error',
+    SUCCESS: 'common.success',
+    WARNING: 'common.warning',
+    INFO: 'common.info',
+  },
+} as const;
+
+// Tipos para validación
+export type TranslationKey = typeof TRANSLATION_KEYS[keyof typeof TRANSLATION_KEYS][keyof typeof TRANSLATION_KEYS[keyof typeof TRANSLATION_KEYS]];

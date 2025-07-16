@@ -1,0 +1,24 @@
+{
+  "notification": {
+    "subject": "{{title}} - {{appName}}",
+    "greeting": "Hola",
+    "viewMore": "Ver más",
+    "footer": {
+      "thanks": "Saludos,",
+      "team": "El equipo de {{appName}}"
+    }
+  },
+  "password-changed": {
+    "subject": "Tu contraseña ha sido cambiada - {{appName}}",
+    "greeting": "Hola {{firstName}}",
+    "title": "Contraseña actualizada exitosamente",
+    "message": "Tu contraseña ha sido cambiada el {{formatDate changedAt 'long'}}.",
+    "warningTitle": "¿No reconoces este cambio?",
+    "warningMessage": "Si no realizaste este cambio, por favor contacta inmediatamente a nuestro equipo de soporte.",
+    "contactButton": "Contactar soporte",
+    "footer": {
+      "thanks": "Mantente seguro,",
+      "team": "El equipo de seguridad de {{appName}}"
+    }
+  }
+}

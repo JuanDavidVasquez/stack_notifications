@@ -1,0 +1,19 @@
+{
+  "subject": "¡Bienvenido a !",
+  "greeting": "Hola",
+  "title": "¡Bienvenido a nuestra plataforma!",
+  "message": "Estamos muy contentos de que te hayas unido a nosotros.",
+  "verificationTitle": "Verifica tu cuenta",
+  "verificationMessage": "Para completar tu registro, por favor verifica tu cuenta con el siguiente código:",
+  "verificationCode": "Código de verificación",
+  "verificationButton": "Verificar mi cuenta",
+  "alternativeText": "Si el botón no funciona, puedes copiar y pegar el siguiente enlace en tu navegador:",
+  "questionsTitle": "¿Tienes preguntas?",
+  "questionsMessage": "Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.",
+  "footer": {
+    "thanks": "Gracias,",
+    "team": "El equipo de",
+    "unsubscribe": "Si no solicitaste esta cuenta, puedes ignorar este correo.",
+    "footerNote": "Este es un mensaje automatizado, por favor no respondas."
+  }
+}
