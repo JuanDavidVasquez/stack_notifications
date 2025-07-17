@@ -83,17 +83,15 @@ export class EmailController {
    */
   async sendPasswordChangedEmail(req: LocalizedRequest, res: Response) {
     try {
-      const { email, userName, changedAt } = req.body;
-
-      const language = (req.language || 'en') as SupportedLanguage;
+      const { to, data, language } = req.body;
 
       await emailService.sendEmail({
-        to: email,
+        to: to,
         template: 'password-changed',
         language,
         data: {
-          userName,
-          changedAt: changedAt || new Date(),
+          userName: data.userName || to,
+          changedAt: data.changedAt || new Date(),
           supportLink: `${process.env.FRONTEND_URL}/support`
         }
       });
