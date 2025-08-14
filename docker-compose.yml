@@ -26,9 +26,9 @@ services:
     networks:
       - microservices
 
-  # Base de datos MySQL para notificaciones
+  # Base de datos MySQL
   mysql:
-    image: mysql:latest
+    image: mysql:8.0
     container_name: notifications_mysql
     restart: always
     environment:
@@ -43,7 +43,7 @@ services:
     networks:
       - microservices
 
-  # Redis para colas de trabajos
+  # Redis para colas
   redis:
     image: redis:7-alpine
     container_name: notifications_redis
@@ -55,7 +55,7 @@ services:
     networks:
       - microservices
 
-  # Dashboard para monitorear las colas (Bull Dashboard)
+  # Bull Board para monitorear colas
   bull-dashboard:
     image: deadly0/bull-board
     container_name: notifications_dashboard
@@ -65,13 +65,12 @@ services:
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      REDIS_PASSWORD: ""
     depends_on:
       - redis
     networks:
       - microservices
 
-  # PhpMyAdmin para gestión de base de datos
+  # PhpMyAdmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: notifications_phpmyadmin
@@ -84,6 +83,18 @@ services:
       - "8081:80"
     depends_on:
       - mysql
+    networks:
+      - microservices
+
+  # RedisInsight (Dashboard visual para Redis)
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: notifications_redisinsight
+    restart: always
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis
     networks:
       - microservices
 

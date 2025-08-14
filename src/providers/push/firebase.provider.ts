@@ -3,7 +3,7 @@ import { NotificationResult } from '../../shared/interfaces/notification.interfa
 import { NotificationStatus } from '../../shared/enums/notification-type.enum';
 import { config } from '../../core/config/env';
 import setupLogger from '../../shared/utils/logger';
-import { Notification } from '../../core/entities/entities/notification.entity';
+import { Notification } from '../../core/database/models/entities/notification.entity';
 
 export interface PushProviderConfig {
   serviceAccountKey: any;
